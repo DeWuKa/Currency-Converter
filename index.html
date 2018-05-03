@@ -24,25 +24,19 @@
         <form>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <select class="currencyList custom-select">
+                    <select id="currencyList1" class="custom-select">
+                            
                     </select>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <input type="text" list="currencyList2" placeholder="currency ID" name="getCurrencyId" class="form-control" id="validationCurrencyId">
-                    <datalist id="currencyList2">
-                    </datalist>
-                    <div class="invalid-feedback">
-                            Please choose a valid currency Id.
-                    </div>
-                    <div class="valid-feedback">
-                            Correct Value!
-                    </div>
+                    <input type="text"  placeholder="To currency" class="form-control" id="currencyList2" title="please provide three letter currency Id" pattern="[A-Za-z]{3}">
+                                       
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <input type="text" name="currencyAmount" class="form-control">
+                    <input type="number"  placeholder="Amount" name="currencyAmount" class="form-control" id="amount" title="Please provide correct amount" min="0.01" max="100000.00" step="0.01">
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <input type="text" name="resoult" class="form-control">
+                    <input type="text" name="resoult" class="form-control" id="result" readonly>
                 </div>
 
             </div>
@@ -57,7 +51,7 @@
 <!-- w domu bootstrap użytkownik ma 2 pola:
         ok  jedno jest rozwijane z załadowanymi watościami walutowymi (euro, GBP itp) 
         ok  drugie pole do wpisania textu walidacja na 3 znaki) 
-            i trzecie ple na uzupenienie kwoty,
+        ok  i trzecie ple na uzupenienie kwoty,
             w czwartym wyświetla wynik w div
             strona ma być ładna, stonowana.
             przeliczać ma na zasadzie timeout jak użytkownik skończy pisać
