@@ -2,7 +2,7 @@ var currencyList = [];
 
 $(document).ready(function() {
   getCurrencies();
-  createOptions();
+      
 });
 
 function getCurrencies() {
@@ -11,16 +11,25 @@ function getCurrencies() {
     function(response) {
       $.each(response[0].rates, function(i, item) {
         currencyList.push(item);
-      });
-    }
-  );
+         });    
+        }
+    ).done(function(){
+    createOptions()
+});
 }
 
 function createOptions() {
-    $.each(currencyList, function (i, item) {
-        $('currencyList').append($('<option>', { 
-            value: item.currencyList[i].currency,
-            text : item.currencyList[i].code
-        }));
+  var option = "";
+  for (var i = 0; i < currencyList.length; i++) {
+    option += "<option value='" + currencyList[i].code + "'>" + currencyList[i].code + "</option>";
+  }
+    $("#currencyList2").append(option)
+    $(".currencyList").append(option);
+    validation();
+}
+
+function validation() {
+  $("#currencyId").on("input", function(){ 
+   
     });
 }

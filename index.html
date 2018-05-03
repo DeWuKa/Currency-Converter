@@ -1,60 +1,67 @@
-<DOCTYPE html>
-    <html land="pl">
+<!DOCTYPE html>
+<html lang="pl">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-            crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <title>Currency converter</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>Currency converter</title>
+</head>
 
-    <body>
-        <h1>Currency converter</h1>
-        <div class="container">
+<body>
+    <div class="col">
+    <h1>Currency converter</h1>
+    </div>
+    <div class="container">
+        <form>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <form>
-                        <input type="text" list="from-currency">
-                        <datalist id="from-currency">
-                            <select name="currencyList">
-                                
-                            </select>
-                        </datalist>
-                    </form>
+                    <select class="currencyList custom-select">
+                    </select>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <form>
-                        <input type="text" list="to-currency">
-                        <datalist id="to-currency">
-                            <select name="currencyList">
-                               
-                            </select>
-                        </datalist>
-                    </form>
+                    <input type="text" list="currencyList2" placeholder="currency ID" name="getCurrencyId" class="form-control" id="validationCurrencyId">
+                    <datalist id="currencyList2">
+                    </datalist>
+                    <div class="invalid-feedback">
+                            Please choose a valid currency Id.
+                    </div>
+                    <div class="valid-feedback">
+                            Correct Value!
+                    </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <form>
-                        <input type="text">
-                    </form>
+                    <input type="text" name="currencyAmount" class="form-control">
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <form>
-                        <input type="text" id="reasult">
-                    </form>
+                    <input type="text" name="resoult" class="form-control">
                 </div>
+
             </div>
-        </div>
-        <script src="script.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-            crossorigin="anonymous"></script>
-    </body>
+        </form>
+    </div>
 
-    </html>
+</body>
+
+</html>
 
 
-    <!-- w domu bootstrap użytkownik ma 2 pola, jedno jest rozwijane z załadowanymi watościami walutowymi (euro, GBP itp) drugie pole do wpisania textu walidacja na 3 znaki) i trzecie ple na uzupenienie kwoty, w czwartym wyświetla wynik w div. strona ma być ładna, stonowana. przeliczać ma na zasadzie timeout jak użytkownik skończy pisać obsługa poprzez catche, aplikacja ma wyglądać na premium kontrolki prowadzące po aplikacji (np brak możliwości wypełnienia pola bez wypełnienia poprzedniego) ograniczenie liczby kliknięć (nawigacja) wykorzystać noscript Przydatne: <mate name="theme-color" content = " #ffffff"/>-->
+<!-- w domu bootstrap użytkownik ma 2 pola:
+        ok  jedno jest rozwijane z załadowanymi watościami walutowymi (euro, GBP itp) 
+        ok  drugie pole do wpisania textu walidacja na 3 znaki) 
+            i trzecie ple na uzupenienie kwoty,
+            w czwartym wyświetla wynik w div
+            strona ma być ładna, stonowana.
+            przeliczać ma na zasadzie timeout jak użytkownik skończy pisać
+            obsługa poprzez catche, 
+            aplikacja ma wyglądać na premium kontrolki prowadzące po aplikacji (np brak możliwości wypełnienia pola bez wypełnienia poprzedniego) 
+            ograniczenie liczby kliknięć (nawigacja) 
+            wykorzystać noscript
