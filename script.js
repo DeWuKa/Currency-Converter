@@ -37,10 +37,13 @@ function validateAmount(){
 
 function validateId(){
   var chosenId = $("#currencyList2").val().toUpperCase();
-  if(chosenId == chosenCurrency1){
+  var pattern = /[a-zA-Z]{3}/;
+    if(chosenId == chosenCurrency1){
     $("#alreadyChosen").css("display", "block");
   }else if ($.inArray(chosenId, currencyList) !==-1){
     $("#wrongId").css("display", "none");
+    $("#alreadyChosen").css("display", "none");
+    $("#lettersOnly").css("display", "none");
     getMidTo();
   }else{
     $("#wrongId").css("display", "block");
