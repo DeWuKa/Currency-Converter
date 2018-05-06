@@ -52,8 +52,7 @@ function validateId(){
 //------get JSON with currencies------//
 
 function getCurrencies() {
-  try{
-  $.getJSON(
+   $.getJSON(
     "http://api.nbp.pl/api/exchangerates/tables/a/?format=json",
     function(response) {
       $.each(response[0].rates, function(i, item) {
@@ -63,9 +62,6 @@ function getCurrencies() {
     ).done(function(){
     createOptions();
 });
-  }catch(err) {
-          alert("we cannot download currencies")
-    }
   }
 
 //------Creat Option to sellect------//
