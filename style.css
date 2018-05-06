@@ -6,6 +6,7 @@ h1{
     text-transform: uppercase;
 }
 
+#alreadyChosen,
 #wrongId,
 #wrongValue{
     display: none;

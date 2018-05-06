@@ -1,4 +1,5 @@
 var currencyList = ["PLN"];
+var chosenCurrency1;
 
 $(document).ready(function() {
   getCurrencies();
@@ -29,7 +30,9 @@ function validateAmount(){
 
 function validateId(){
   var chosenId = $("#currencyList2").val().toUpperCase();
-    if ($.inArray(chosenId, currencyList) !==-1){
+  if(chosenId == chosenCurrency1){
+    $("#alreadyChosen").css("display", "block");
+  }else if ($.inArray(chosenId, currencyList) !==-1){
     $("#wrongId").css("display", "none");
     getMidTo();
   }else{
@@ -61,7 +64,7 @@ function createOptions() {
   var currencyToList;
 
 function getMidFrom(){
-  var chosenCurrency1 = $("#currencyList1 option:selected").val();
+  chosenCurrency1 = $("#currencyList1 option:selected").val();
   if (chosenCurrency1 =="PLN"){
     currencyFromList = 1;
   }else{
@@ -71,15 +74,19 @@ function getMidFrom(){
 }  
 }
 
+ function getMidTo(){
+  var chosenCurrency2 = $("#currencyList2").val().toUpperCase();   
+  if (chosenCurrency2 =="PLN"){
+    currencyToList = 1;
+  }else{ 
+    $.getJSON("http://api.nbp.pl/api/exchangerates/rates/a/" + chosenCurrency2 + "/?format=json", function(currencyData) {   
+   currencyToList = currencyData.rates[0].mid;
+});
+  }
+}
+
 function calculateResult() {
   var key = $("#amount").val();
   var res = Math.round((key*currencyFromList/currencyToList)*100)/100;
   $("#result").val(res);
   }
-
- function getMidTo(){
-  var chosenCurrency2 = $("#currencyList2").val().toUpperCase();    
-    $.getJSON("http://api.nbp.pl/api/exchangerates/rates/a/" + chosenCurrency2 + "/?format=json", function(currencyData) {   
-   currencyToList = currencyData.rates[0].mid;
-});
-}
