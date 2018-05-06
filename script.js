@@ -1,5 +1,10 @@
+//------Variables------//
 var currencyList = ["PLN"];
 var chosenCurrency1;
+var currencyFromList;
+var currencyToList;
+
+//-------Main function------//
 
 $(document).ready(function() {
   getCurrencies();
@@ -16,6 +21,8 @@ $(document).ready(function() {
     setTimeout(validateAmount, 1000);
   });
 });
+
+//------Validation------//
 
 function validateAmount(){
   var pattern = /^(\d{1,6})+((\.|\,)\d{1,2})?$/;
@@ -39,6 +46,9 @@ function validateId(){
     $("#wrongId").css("display", "block");
   }
 }
+
+//------get JSON with currencies------//
+
 function getCurrencies() {
   $.getJSON(
     "http://api.nbp.pl/api/exchangerates/tables/a/?format=json",
@@ -52,6 +62,8 @@ function getCurrencies() {
 });
 }
 
+//------Creat Option to sellect------//
+
 function createOptions() {
   var option = "";
   for (var i = 0; i < currencyList.length; i++) {
@@ -60,8 +72,7 @@ function createOptions() {
     $("#currencyList1").append(option)
   }
 
-  var currencyFromList;
-  var currencyToList;
+  //------Get Value of currency------//
 
 function getMidFrom(){
   chosenCurrency1 = $("#currencyList1 option:selected").val();
@@ -84,6 +95,8 @@ function getMidFrom(){
 });
   }
 }
+
+//------Calculate Result------//
 
 function calculateResult() {
   var key = $("#amount").val();
