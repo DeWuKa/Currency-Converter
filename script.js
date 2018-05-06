@@ -1,4 +1,4 @@
-var currencyList = [];
+var currencyList = ["PLN"];
 
 $(document).ready(function() {
   getCurrencies();
@@ -28,15 +28,14 @@ function validateAmount(){
 }
 
 function validateId(){
-  var chosenId = $("#currencyList2").val();
-    if (jQuery.inArray(chosenId, currencyList) !==-1){
+  var chosenId = $("#currencyList2").val().toUpperCase();
+    if ($.inArray(chosenId, currencyList) !==-1){
     $("#wrongId").css("display", "none");
     getMidTo();
   }else{
     $("#wrongId").css("display", "block");
   }
 }
-
 function getCurrencies() {
   $.getJSON(
     "http://api.nbp.pl/api/exchangerates/tables/a/?format=json",
@@ -63,34 +62,23 @@ function createOptions() {
 
 function getMidFrom(){
   var chosenCurrency1 = $("#currencyList1 option:selected").val();
+  if (chosenCurrency1 =="PLN"){
+    currencyFromList = 1;
+  }else{
   $.getJSON("http://api.nbp.pl/api/exchangerates/rates/a/" + chosenCurrency1 + "/?format=json", function(currencyData) {   
       currencyFromList = currencyData.rates[0].mid;
-  });  
+  });
+}  
 }
 
-var Timer;
 function calculateResult() {
-    $("#amount").keyup(function () {
-        clearTimeout(Timer);
-        Timer = setTimeout(SendRequest, 1000);
-    });
+  var key = $("#amount").val();
+  var res = Math.round((key*currencyFromList/currencyToList)*100)/100;
+  $("#result").val(res);
   }
-function SendRequest() {
-    var key = $("#amount").val();
-    var res = Math.round((key*currencyFromList/currencyToList)*100)/100;
-    $("#result").val(res);
-}
-/*
-var Timer2;
-function getMidTo() {
-    $("#currencyList2").keyup(function () {
-        clearTimeout(Timer2);
-        Timer2 = setTimeout(SendRequest2, 1000);
-    });
-}function SendRequest2() {
-  */
+
  function getMidTo(){
-  var chosenCurrency2 = $("#currencyList2").val();    
+  var chosenCurrency2 = $("#currencyList2").val().toUpperCase();    
     $.getJSON("http://api.nbp.pl/api/exchangerates/rates/a/" + chosenCurrency2 + "/?format=json", function(currencyData) {   
    currencyToList = currencyData.rates[0].mid;
 });
