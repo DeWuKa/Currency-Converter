@@ -5,3 +5,13 @@
 h1{
     text-transform: uppercase;
 }
+
+#wrongId,
+#wrongValue{
+    display: none;
+}
+
+#result{
+    cursor: default;
+    background-color: white;
+}

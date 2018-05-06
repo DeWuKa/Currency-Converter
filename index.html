@@ -30,16 +30,21 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                     <label>To currency</label>
-                    <input type="text" placeholder="To currency" class="form-control" id="currencyList2" title="please provide three letter currency Id" pattern="[A-Za-z]{3}">
+                    <input type="text" placeholder="To currency" class="form-control" id="currencyList2" title="please provide three letter currency Id" pattern="[A-Za-z]{3}" maxlength="3">
+                    <div class="alert alert-danger" id="wrongId">
+                        Please provide curreny ID, e.g. "EUR"
+                    </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                     <label>Amount</label>
-                    <input type="number" placeholder="Amount" name="currencyAmount" class="form-control" id="amount" title="Please provide correct amount"
-                        min="0.01" max="100000.00" step="0.01">
+                    <input type="text" placeholder="Amount" class="form-control" id="amount" title="Please provide correct amount">
+                    <div class="alert alert-danger" id="wrongValue">
+                        Please provide amount of currency, e.g. "15.50"
+                    </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                     <label>Resoult</label>
-                    <input type="text" name="resoult" class="form-control" id="result" readonly>
+                    <input type="text" class="form-control" id="result" readonly>
                 </div>
 
             </div>
@@ -51,14 +56,8 @@
 </html>
 
 
-<!-- w domu bootstrap użytkownik ma 2 pola:
-        ok  jedno jest rozwijane z załadowanymi watościami walutowymi (euro, GBP itp) 
-        ok  drugie pole do wpisania textu walidacja na 3 znaki) 
-        ok  i trzecie ple na uzupenienie kwoty,
-            w czwartym wyświetla wynik w div
-            strona ma być ładna, stonowana.
-            przeliczać ma na zasadzie timeout jak użytkownik skończy pisać
-            obsługa poprzez catche, 
+<!--        obsługa poprzez try catche, 
             aplikacja ma wyglądać na premium kontrolki prowadzące po aplikacji (np brak możliwości wypełnienia pola bez wypełnienia poprzedniego) 
             ograniczenie liczby kliknięć (nawigacja) 
             wykorzystać noscript
+-->
