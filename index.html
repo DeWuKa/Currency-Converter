@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,53 +14,49 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <title>Currency converter</title>
-</head>
 
-<body class="bg-light">
-    <div class="container">
-        <div class="py-5 text-center">
-            <h1>Currency converter</h1>
-        </div>
-        <form>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <label>From currency</label>                    
-                    <select id="currencyList1" class="custom-select">
-                        <option value="" selected disabled hidden>Select ID</option>
-                    </select>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <label>To currency</label>
-                    <input type="text" placeholder="To currency" class="form-control" id="currencyList2" title="please provide three letter currency Id" pattern="[A-Za-z]{3}" maxlength="3">
-                    <div class="alert alert-danger" id="wrongId">
-                        Please provide curreny ID, e.g. "EUR"
-                    </div>
-                    <div class="alert alert-danger" id="alreadyChosen">
-                        You have already choosen this value. Please select another ID
-                    </div>                    
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <label>Amount</label>
-                    <input type="number" placeholder="Amount" class="form-control" id="amount" title="Please provide correct amount">
-                    <div class="alert alert-danger" id="wrongValue">
-                        Please provide amount of currency, e.g. "15.50"
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                    <label>Resoult</label>
-                    <input type="text" class="form-control" id="result" readonly>
-                </div>
-
+    <body class="bg-light">
+        <div class="container">
+            <div class="py-5 text-center">
+                <h1>Currency converter</h1>
             </div>
-        </form>
-    </div>
-
-</body>
-
+            <form>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                        <label>From currency</label>
+                        <select id="currencyList1" class="custom-select">
+                            <option value="" selected disabled hidden>Select ID</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                        <label>To currency</label>
+                        <input type="text" placeholder="To currency" class="form-control" id="currencyList2" title="please provide three letter currency Id"
+                            pattern="[A-Za-z]{3}" maxlength="3">
+                        <div class="alert alert-danger" id="wrongId">
+                            Please provide curreny ID, e.g. "EUR"
+                        </div>
+                        <div class="alert alert-danger" id="alreadyChosen">
+                            You have already choosen this value. Please select another ID
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                        <label>Amount</label>
+                        <input type="number" placeholder="Amount" class="form-control" id="amount" title="Please provide correct amount">
+                        <div class="alert alert-danger" id="wrongValue">
+                            Please provide amount of currency, e.g. "15.50"
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                        <label>Resoult</label>
+                        <input type="text" class="form-control" id="result" readonly>
+                    </div>
+                </div>
+                <noscript>
+                    <div class="alert alert-danger">
+                        <strong>Sorry, your browser does not support JavaScript!</strong>
+                    </div>
+                </noscript>
+            </form>
+        </div>
+    </body>
 </html>
-
-<!--        
-            obsługa poprzez try catche, 
-            aplikacja ma wyglądać na premium kontrolki prowadzące po aplikacji (np brak możliwości wypełnienia pola bez wypełnienia poprzedniego) 
-            wykorzystać noscript
--->

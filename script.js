@@ -37,15 +37,14 @@ function validateAmount(){
 
 function validateId(){
   var chosenId = $("#currencyList2").val().toUpperCase();
-  var pattern = /[a-zA-Z]{3}/;
     if(chosenId == chosenCurrency1){
     $("#alreadyChosen").css("display", "block");
-  }else if ($.inArray(chosenId, currencyList) !==-1){
+    }else if ($.inArray(chosenId, currencyList) !==-1){
     $("#wrongId").css("display", "none");
     $("#alreadyChosen").css("display", "none");
     $("#lettersOnly").css("display", "none");
     getMidTo();
-  }else{
+    }else{
     $("#wrongId").css("display", "block");
   }
 }
@@ -53,6 +52,7 @@ function validateId(){
 //------get JSON with currencies------//
 
 function getCurrencies() {
+  try{
   $.getJSON(
     "http://api.nbp.pl/api/exchangerates/tables/a/?format=json",
     function(response) {
@@ -63,7 +63,10 @@ function getCurrencies() {
     ).done(function(){
     createOptions();
 });
-}
+  }catch(err) {
+          alert("we cannot download currencies")
+    }
+  }
 
 //------Creat Option to sellect------//
 
@@ -85,7 +88,7 @@ function getMidFrom(){
   $.getJSON("http://api.nbp.pl/api/exchangerates/rates/a/" + chosenCurrency1 + "/?format=json", function(currencyData) {   
       currencyFromList = currencyData.rates[0].mid;
   });
-}  
+  }  
 }
 
  function getMidTo(){
